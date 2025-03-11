@@ -1,14 +1,16 @@
-// import { MuiTypography } from "./component/MuiTypography";
+import { MuiButton } from "./component/MuiButton";
 
-import { MuiTypography } from "./component/MuiTypography";
+// import { MuiTypography } from "./component/MuiTypography";
 
 
 function App() {
   return (
     <div className="App">
-       <MuiTypography/>
+       {/* <MuiTypography/> */}
+       <MuiButton/>
     </div>
   );
 }
 
 export default App;
+
