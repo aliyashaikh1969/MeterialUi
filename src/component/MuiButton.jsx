@@ -1,7 +1,19 @@
-import { Button, Stack, IconButton ,ButtonGroup} from "@mui/material";
+import { Button, Stack, IconButton, ButtonGroup,ToggleButtonGroup,ToggleButton, Typography, colors } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import FormatBoldIcon from '@mui/icons-material/FormatBold';
+import FormatItalicIcon from '@mui/icons-material/FormatItalic';
+import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
+import { useState } from "react";
 
 export const MuiButton = () => {
+  const [format,setFormat] = useState(null ||[])
+  const onHandleChange =(e,updateFormate)=>{
+    // console.log(e,updateFormate)
+    console.log(format)
+    setFormat(updateFormate)
+    console.log(format)
+  }
+
   return (
     <>
       <Stack spacing={4} p="3rem">
@@ -87,24 +99,49 @@ export const MuiButton = () => {
           </Button>
         </Stack>
         <Stack spacing={2} direction={"row"} display={"block"}>
-          <Button variant="contained" startIcon={<SendIcon />} disableRipple onClick={()=>alert("click")}> disable only ripple effect
-            send
+          <Button
+            variant="contained"
+            startIcon={<SendIcon />}
+            disableRipple
+            onClick={() => alert("click")}
+          >
+            {" "}
+            disable only ripple effect send
           </Button>
-          <Button variant="contained" endIcon={<SendIcon />} disableElevation> 
+          <Button variant="contained" endIcon={<SendIcon />} disableElevation>
             send disable button
-           </Button>
+          </Button>
           <IconButton aria-label="send" color="success" size="small">
-            <SendIcon /> 
+            <SendIcon />
           </IconButton>
         </Stack>
         <Stack direction={"row"}>
-            <ButtonGroup variant="contained" orientation="vertical" color="secondary" aria-label="alignment button-group" > 
-            <Button onClick={()=>alert("left")}>left</Button>
+          <ButtonGroup
+            variant="contained"
+            orientation="vertical"
+            color="secondary"
+            aria-label="alignment button-group"
+          >
+            <Button onClick={() => alert("left")}>left</Button>
             <Button>center</Button>
             <Button>right</Button>
-        
-            </ButtonGroup>
+          </ButtonGroup>
+        </Stack>
+        <Stack direction={"row"}>
+          <ToggleButtonGroup aria-label="text formatting" value={format} onChange={onHandleChange} exclusive>
+            <ToggleButton value={"bold"} aria-label="bold" >
+            <FormatBoldIcon/>
+            </ToggleButton>
+            <ToggleButton value="italic" aria-label="italic" >
+            <FormatItalicIcon/>
+            </ToggleButton>
+            <ToggleButton value="underlined" aria-label="underlined">
 
+            <FormatUnderlinedIcon/>
+            </ToggleButton>
+          </ToggleButtonGroup>
+
+          {/* <Typography>text for style</Typography> */}
         </Stack>
       </Stack>
     </>
