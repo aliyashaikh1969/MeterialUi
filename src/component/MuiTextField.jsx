@@ -1,6 +1,8 @@
 import { Stack, TextField, Typography, InputAdornment } from "@mui/material";
+import { useState } from "react";
 
 export const MuiTextField = () => {
+  const [userName , setUserName] = useState("")
   return (
     <>
       <Stack p={"30px"} spacing={4}>
@@ -44,6 +46,9 @@ export const MuiTextField = () => {
             }}
           />
         </Stack>
+        <Stack direction={"row"} >
+          <TextField label="User Name" value={userName} onChange={e=>setUserName(e.target.value)} error={userName.length<3} helperText={userName.length<3 ? "not less than 3" : "valid name"} required/>
+          </Stack>
       </Stack>
     </>
   );
